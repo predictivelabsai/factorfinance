@@ -88,8 +88,9 @@ def _lang_switcher(current_lang: str):
             A(
                 meta["flag"],
                 href=f"/set-lang?lang={code}",
+                onclick=f"document.cookie='lang={code};path=/;max-age=31536000;samesite=lax';location.reload();return false;",
                 title=meta["name"],
-                cls=f"text-lg leading-none px-1 {'opacity-100' if is_active else 'opacity-50 hover:opacity-80'} transition-opacity",
+                cls=f"text-lg leading-none px-1 cursor-pointer {'opacity-100' if is_active else 'opacity-50 hover:opacity-80'} transition-opacity",
             )
         )
     return Div(*flags, cls="flex items-center gap-1")
